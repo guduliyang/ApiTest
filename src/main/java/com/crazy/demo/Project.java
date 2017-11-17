@@ -3,29 +3,32 @@ package com.crazy.demo;
 import org.json.JSONObject;
 
 public class Project {
-    public String _id = null;
-    public String name = null;
-    public String address_www = null;
-    public String address_uat = null;
+    private String _id = null;
+    private String name = null;
+    private String host_wuxia = null;
+    private String host_uat = null;
+    private String host_wuxib = null;
 
     public Project(String name) {
         this.name = name;
     }
 
-    public Project(String _id, String name, String address_www, String address_uat) {
+    public Project(String _id, String name, String host_wuxia, String host_wuxib, String host_uat) {
         this._id = _id;
         this.name = name;
-        this.address_www = address_www;
-        this.address_uat = address_uat;
+        this.host_wuxia = host_wuxia;
+        this.host_wuxib = host_wuxib;
+        this.host_uat = host_uat;
     }
 
-    public String toJson() {
+    public JSONObject toJson() {
         JSONObject object = new JSONObject();
         object.put("_id", _id);
         object.put("name", name);
-        object.put("address_www", address_www);
-        object.put("address_uat", address_uat);
-        return object.toString();
+        object.put("host_wuxia", host_wuxia);
+        object.put("host_wuxib", host_wuxib);
+        object.put("host_uat", host_uat);
+        return object;
     }
 
     @Override
@@ -33,8 +36,9 @@ public class Project {
         return "Project{" +
                 "_id='" + _id + '\'' +
                 ", name='" + name + '\'' +
-                ", address_www='" + address_www + '\'' +
-                ", address_uat='" + address_uat + '\'' +
+                ", host_wuxia='" + host_wuxia + '\'' +
+                ", host_wuxib='" + host_wuxib + '\'' +
+                ", host_uat='" + host_uat + '\'' +
                 '}';
     }
 
@@ -54,19 +58,27 @@ public class Project {
         this.name = name;
     }
 
-    public String getAddress_www() {
-        return address_www;
+    public String getHost_wuxia() {
+        return host_wuxia;
     }
 
-    public void setAddress_www(String address_www) {
-        this.address_www = address_www;
+    public void setHost_wuxia(String host_wuxia) {
+        this.host_wuxia = host_wuxia;
     }
 
-    public String getAddress_uat() {
-        return address_uat;
+    public String getHost_uat() {
+        return host_uat;
     }
 
-    public void setAddress_uat(String address_uat) {
-        this.address_uat = address_uat;
+    public void setHost_uat(String host_uat) {
+        this.host_uat = host_uat;
+    }
+
+    public String getHost_wuxib() {
+        return host_wuxib;
+    }
+
+    public void setHost_wuxib(String host_wuxib) {
+        this.host_wuxib = host_wuxib;
     }
 }

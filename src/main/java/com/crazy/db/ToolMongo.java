@@ -6,7 +6,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.apache.log4j.Logger;
 import org.bson.Document;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -14,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Properties;
 
+@Service("phoneBlacklistCache")
 public class ToolMongo {
     private Logger logger = Logger.getLogger(ToolMongo.class);
     private static ToolMongo toolMongo = null;
@@ -31,6 +34,7 @@ public class ToolMongo {
         getDatabase(databaseName);
     }
 
+    @PostConstruct
     public static ToolMongo getToolMongo() {
         if (toolMongo == null) {
             synchronized (ToolMongo.class) {

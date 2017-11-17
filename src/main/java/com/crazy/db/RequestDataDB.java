@@ -50,7 +50,7 @@ public class RequestDataDB {
         COLLECTION.findOneAndDelete(dbObject);
     }
 
-    public static UpdateResult updateByID(String project_name,String _id, Project update){
+    public static UpdateResult updateByID(String project_name,String _id, RequestData update){
         COLLECTION = toolMongo.getCollection(project_name);
         Document filter = new Document();
         filter.put("_id", new ObjectId(_id));

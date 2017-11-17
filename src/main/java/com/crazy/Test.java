@@ -28,6 +28,7 @@ public class Test {
     public String testPost(HttpServletRequest request) throws UnirestException {
         HttpResponse<String> response = null;
         response = Unirest.get("http://www.baidu.com").asString();
+        response = Unirest.post("http://www.baidu.com").asString();
         return response.getBody();
     }
 }
