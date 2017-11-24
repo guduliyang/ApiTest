@@ -16,8 +16,8 @@ public class ApiInfo {
     private String method = null;
     private String url = null;
     private String project_name = null;
-    private List<String> params = null;
-    private List<String> bodys = null;
+    private List<Param> params = null;
+    private List<Param> bodys = null;
     private Map<String,String> headers = null;
 
     public ApiInfo(String name, String project_name) {
@@ -25,7 +25,7 @@ public class ApiInfo {
         this.project_name = project_name;
     }
 
-    public ApiInfo(String _id, String name, String project_name, String url, List<String> params, List<String> bodys, String method, Map<String,String> headers) {
+    public ApiInfo(String _id, String name, String project_name, String url, List<Param> params, List<Param> bodys, String method, Map<String,String> headers) {
         this._id = _id;
         this.name = name;
         this.project_name = project_name;
@@ -49,14 +49,24 @@ public class ApiInfo {
         return object.toString();
     }
 
-    public void addParams(String key){
-        if(params==null)params = new ArrayList<String>();
-        params.add(key);
+    public void addParams(String name,boolean necessary){
+        if(params==null)params = new ArrayList<Param>();
+        params.add(new Param(name,necessary));
     }
 
-    public void addBody(String key){
-        if(bodys==null)bodys = new ArrayList<String>();
-        bodys.add(key);
+    public void addParams(String name,boolean necessary,int type){
+        if(params==null)params = new ArrayList<Param>();
+        params.add(new Param(name,necessary,type));
+    }
+
+    public void addBody(String name,boolean necessary){
+        if(bodys==null)bodys = new ArrayList<Param>();
+        bodys.add(new Param(name,necessary));
+    }
+
+    public void addBody(String name,boolean necessary,int type){
+        if(bodys==null)bodys = new ArrayList<Param>();
+        bodys.add(new Param(name,necessary,type));
     }
 
     public void addHeader(String key,String value){
@@ -110,22 +120,6 @@ public class ApiInfo {
         this.url = url;
     }
 
-    public List<String> getParams() {
-        return params;
-    }
-
-    public void setParams(List<String> params) {
-        this.params = params;
-    }
-
-    public List<String> getBodys() {
-        return bodys;
-    }
-
-    public void setBodys(List<String> bodys) {
-        this.bodys = bodys;
-    }
-
     public String getMethod() {
         return method;
     }
@@ -140,5 +134,21 @@ public class ApiInfo {
 
     public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
+    }
+
+    public List<Param> getParams() {
+        return params;
+    }
+
+    public void setParams(List<Param> params) {
+        this.params = params;
+    }
+
+    public List<Param> getBodys() {
+        return bodys;
+    }
+
+    public void setBodys(List<Param> bodys) {
+        this.bodys = bodys;
     }
 }

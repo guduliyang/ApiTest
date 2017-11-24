@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "projects")
-public class ProjectList {
+public class Projects {
 
     @RequestMapping(value = "add",method = RequestMethod.GET)
     public String add(HttpServletRequest request){
@@ -28,11 +28,11 @@ public class ProjectList {
         project.setHost_wuxib(host_wuxib);
         project.setHost_uat(host_uat);
         ProjectDB.addProject(project);
-        return ProjectDB.find().toString();
+        return "{\"success\":true}";
     }
 
     @RequestMapping(value = "updata",method = RequestMethod.GET)
-    public boolean updata(HttpServletRequest request){
+    public String updata(HttpServletRequest request){
         String _id = request.getParameter("_id");
         String name = request.getParameter("name");
         String host_wuxia = request.getParameter("host_wuxia");
@@ -48,15 +48,19 @@ public class ProjectList {
         project.setHost_wuxib(host_wuxib);
         project.setHost_uat(host_uat);
         project.set_id(null);
-        UpdateResult result = ProjectDB.updateByID(_id,project);
-        return true;
+        if(ProjectDB.updateByID(_id,project).wasAcknowledged()){
+            return "{\"success\":true}";
+        }else {
+            return "{\"success\":false}";
+        }
+
     }
 
     @RequestMapping(value = "drop",method = RequestMethod.GET)
     public String drop(HttpServletRequest request){
         String _id = request.getParameter("_id");
         ProjectDB.dropByID(_id);
-        return "drop success";
+        return "{\"success\":true}";
     }
 
     @RequestMapping(value = "findAll",method = RequestMethod.GET)

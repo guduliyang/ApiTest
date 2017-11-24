@@ -76,4 +76,14 @@ public class RequestDataDB {
         }
         return new RequestData(_id,api_name,project_name,env,bodys,params);
     }
+
+    public static void main(String[] args) {
+        RequestData requestData = new RequestData("access_report_token","DataApi");
+        requestData.setEnv(RequestData.TESTING);
+        requestData.addParam("client_secret","4j332l0dc0b43fgef2e32bf853e6ca0");
+        requestData.addParam("access_token","cb50777091b641eaa23063fac667c984");
+        requestData.addParam("name","马健锋");
+        requestData.addParam("idCard","352225198811151010");
+        RequestDataDB.addData(requestData);
+    }
 }

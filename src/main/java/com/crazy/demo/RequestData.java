@@ -8,12 +8,12 @@ import java.util.Map;
 public class RequestData {
     public static final String TESTING = "testing";
     public static final String PRODUCTION = "production";
-    public String _id = null;
-    public String api_name = null;
-    public String project_name = null;
-    public String env = null;
-    public JSONObject bodys = null;
-    public Map<String,Object> params = null;
+    private String _id = null;
+    private String api_name = null;
+    private String project_name = null;
+    private String env = null;
+    private JSONObject bodys = null;
+    private Map<String,Object> params = null;
 
     public RequestData(String api_name, String project_name) {
         this.api_name = api_name;

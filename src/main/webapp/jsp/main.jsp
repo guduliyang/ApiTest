@@ -95,6 +95,10 @@
                     <label class="layui-form-label">请求方式</label>
                     <div class="layui-input-inline">
                         <input type="checkbox" name="method" value="">
+                        <select class="layui-form-select">
+                            <option value="Get">get</option>
+                            <option value="Post">Post</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -123,7 +127,9 @@
                 </div>
             </form>
         </div>
-        <div class="context" id="FlowTest"></div>
+        <div class="context" id="FlowTest">
+
+        </div>
     </div>
 
     <div class="layui-footer">
